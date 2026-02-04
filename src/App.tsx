@@ -1,10 +1,16 @@
-import Message from './Message';
+import { Navbar } from './components/Navbar';
+import Hero from './components/Hero';
+import Body from './components/Body';
+import Footer from './components/Footer';
+
 
 function App() {
     return (
         <div>
-            <h1>Welcome to the App</h1>
-            <Message />
+            <Navbar />
+            <Hero />
+            <Body />
+            <Footer />
         </div>
     );
 }
