@@ -63,7 +63,43 @@ export const programmingProject = defineType({
       name: 'content',
       title: 'Story / details',
       type: 'array',
-      of: [defineArrayMember({ type: 'block' })],
+      of: [
+        defineArrayMember({ type: 'block' }),
+        defineArrayMember({ type: 'image', options: { hotspot: true } }),
+      ],
+    }),
+    defineField({
+      name: 'architecture',
+      title: 'Architecture',
+      type: 'text',
+      rows: 4,
+    }),
+    defineField({
+      name: 'challenges',
+      title: 'Challenges',
+      type: 'text',
+      rows: 4,
+    }),
+    defineField({
+      name: 'timeline',
+      title: 'Development timeline',
+      type: 'array',
+      of: [
+        defineArrayMember({
+          type: 'object',
+          name: 'timelineEvent',
+          fields: [
+            defineField({ name: 'date', type: 'date' }),
+            defineField({
+              name: 'title',
+              type: 'string',
+              validation: (r) => r.required(),
+            }),
+            defineField({ name: 'description', type: 'text', rows: 2 }),
+          ],
+          preview: { select: { title: 'title', subtitle: 'date' } },
+        }),
+      ],
     }),
     defineField({ name: 'githubUrl', title: 'GitHub URL', type: 'url' }),
     defineField({ name: 'liveUrl', title: 'Live / demo URL', type: 'url' }),

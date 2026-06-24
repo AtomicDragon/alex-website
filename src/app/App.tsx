@@ -10,6 +10,10 @@ import NotFound from '../pages/NotFound';
 
 import ProgrammingLanding from '../sections/programming/ProgrammingLanding';
 import ProjectsPage from '../sections/programming/ProjectsPage';
+import ProjectDetailPage from '../sections/programming/ProjectDetailPage';
+import BlogPage from '../sections/programming/BlogPage';
+import BlogPostPage from '../sections/programming/BlogPostPage';
+import RecruiterPage from '../sections/programming/RecruiterPage';
 import ChefLanding from '../sections/chef/ChefLanding';
 import FunLanding from '../sections/fun/FunLanding';
 
@@ -46,28 +50,10 @@ export default function App() {
         <Route path="/programming">
           <Route index element={<ProgrammingLanding />} />
           <Route path="projects" element={<ProjectsPage />} />
-          <Route
-            path="projects/:slug"
-            element={<DetailPlaceholder kind="Project" />}
-          />
-          <Route
-            path="blog"
-            element={
-              <Placeholder
-                title="Blog"
-                subtitle="Tutorials, project logs, architecture, AI, and career writing."
-              />
-            }
-          />
-          <Route
-            path="recruiter"
-            element={
-              <Placeholder
-                title="Recruiter Mode"
-                subtitle="Best projects, résumé, skills matrix, experience timeline, and contact."
-              />
-            }
-          />
+          <Route path="projects/:slug" element={<ProjectDetailPage />} />
+          <Route path="blog" element={<BlogPage />} />
+          <Route path="blog/:slug" element={<BlogPostPage />} />
+          <Route path="recruiter" element={<RecruiterPage />} />
         </Route>
 
         {/* Chef world */}
