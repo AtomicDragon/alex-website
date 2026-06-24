@@ -50,3 +50,49 @@ export type BlogPostCard = {
 export type BlogPost = BlogPostCard & {
   content?: PortableText;
 };
+
+/* ----------------------------- Chef ----------------------------- */
+
+/** Recipe card-level fields. */
+export type RecipeCard = {
+  _id: string;
+  title: string;
+  slug: string | null;
+  heroImage?: SanityImageSource;
+  difficulty?: string;
+  prepTime?: number;
+  cookTime?: number;
+  servings?: number;
+};
+
+/** Full recipe (detail page). */
+export type Recipe = RecipeCard & {
+  ingredients?: string[];
+  instructions?: PortableText;
+  notes?: string;
+  gallery?: SanityImageSource[];
+};
+
+/** Food blog card-level fields. */
+export type FoodBlogCard = {
+  _id: string;
+  title: string;
+  slug: string | null;
+  publishedAt?: string;
+  coverImage?: SanityImageSource;
+};
+
+/** Full food blog post (detail page). */
+export type FoodBlog = FoodBlogCard & {
+  content?: PortableText;
+  images?: SanityImageSource[];
+};
+
+/** Food gallery item. */
+export type GalleryItem = {
+  _id: string;
+  title: string;
+  image: SanityImageSource;
+  category?: string;
+  description?: string;
+};

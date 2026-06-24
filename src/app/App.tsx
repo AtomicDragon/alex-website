@@ -15,6 +15,11 @@ import BlogPage from '../sections/programming/BlogPage';
 import BlogPostPage from '../sections/programming/BlogPostPage';
 import RecruiterPage from '../sections/programming/RecruiterPage';
 import ChefLanding from '../sections/chef/ChefLanding';
+import RecipesPage from '../sections/chef/RecipesPage';
+import RecipeDetailPage from '../sections/chef/RecipeDetailPage';
+import FoodBlogPage from '../sections/chef/FoodBlogPage';
+import FoodBlogPostPage from '../sections/chef/FoodBlogPostPage';
+import GalleryPage from '../sections/chef/GalleryPage';
 import FunLanding from '../sections/fun/FunLanding';
 
 import AdminPage from '../admin/AdminPage';
@@ -59,34 +64,11 @@ export default function App() {
         {/* Chef world */}
         <Route path="/chef">
           <Route index element={<ChefLanding />} />
-          <Route
-            path="recipes"
-            element={
-              <Placeholder
-                title="Recipes"
-                subtitle="Structured recipes with ingredients, steps, notes, and galleries."
-              />
-            }
-          />
-          <Route
-            path="blog"
-            element={
-              <Placeholder
-                title="Food Blog"
-                subtitle="Experiments, reviews, ingredient deep dives, and food travel."
-              />
-            }
-          />
-          <Route
-            path="gallery"
-            element={
-              <Placeholder
-                title="Gallery"
-                subtitle="Masonry gallery with lightbox and category filters."
-              />
-            }
-          />
-          <Route path=":slug" element={<DetailPlaceholder kind="Chef" />} />
+          <Route path="recipes" element={<RecipesPage />} />
+          <Route path="recipes/:slug" element={<RecipeDetailPage />} />
+          <Route path="blog" element={<FoodBlogPage />} />
+          <Route path="blog/:slug" element={<FoodBlogPostPage />} />
+          <Route path="gallery" element={<GalleryPage />} />
         </Route>
 
         {/* Fun world */}

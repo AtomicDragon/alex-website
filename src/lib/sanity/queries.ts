@@ -64,3 +64,64 @@ export const blogPostBySlugQuery = `
   ${blogCardFields},
   content
 }`;
+
+/* ----------------------------- Chef ----------------------------- */
+
+const recipeCardFields = `
+  _id,
+  title,
+  "slug": slug.current,
+  heroImage,
+  difficulty,
+  prepTime,
+  cookTime,
+  servings
+`;
+
+export const recipesQuery = `
+*[_type == "recipe"] | order(coalesce(_updatedAt, _createdAt) desc) {
+  ${recipeCardFields}
+}`;
+
+export const featuredRecipesQuery = `
+*[_type == "recipe"] | order(coalesce(_updatedAt, _createdAt) desc)[0...3] {
+  ${recipeCardFields}
+}`;
+
+export const recipeBySlugQuery = `
+*[_type == "recipe" && slug.current == $slug][0] {
+  ${recipeCardFields},
+  ingredients,
+  instructions,
+  notes,
+  gallery
+}`;
+
+const foodBlogCardFields = `
+  _id,
+  title,
+  "slug": slug.current,
+  publishedAt,
+  "coverImage": images[0]
+`;
+
+export const foodBlogQuery = `
+*[_type == "foodBlog"] | order(coalesce(publishedAt, _createdAt) desc) {
+  ${foodBlogCardFields}
+}`;
+
+export const foodBlogBySlugQuery = `
+*[_type == "foodBlog" && slug.current == $slug][0] {
+  ${foodBlogCardFields},
+  content,
+  images
+}`;
+
+export const galleryItemsQuery = `
+*[_type == "galleryItem"] | order(coalesce(_createdAt, _updatedAt) desc) {
+  _id,
+  title,
+  image,
+  category,
+  description
+}`;
