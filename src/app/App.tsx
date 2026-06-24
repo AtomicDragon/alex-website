@@ -25,7 +25,13 @@ import GameDetailPage from '../sections/fun/GameDetailPage';
 import FunProjectsPage from '../sections/fun/FunProjectsPage';
 import FunProjectDetailPage from '../sections/fun/FunProjectDetailPage';
 
-import AdminPage from '../admin/AdminPage';
+import AdminRoot from '../admin/AdminRoot';
+import Dashboard from '../admin/pages/Dashboard';
+import ContentManager from '../admin/pages/ContentManager';
+import CRM from '../admin/pages/CRM';
+import Opportunities from '../admin/pages/Opportunities';
+import Notes from '../admin/pages/Notes';
+import Tasks from '../admin/pages/Tasks';
 
 // Heavy Studio bundle — kept in its own lazy chunk, mounted outside the shell.
 const StudioRoute = lazy(() => import('../sections/studio/StudioRoute'));
@@ -83,8 +89,17 @@ export default function App() {
           <Route path="projects/:slug" element={<FunProjectDetailPage />} />
         </Route>
 
-        <Route path="/admin" element={<AdminPage />} />
         <Route path="*" element={<NotFound />} />
+      </Route>
+
+      {/* Admin — own layout + auth, outside the public chrome */}
+      <Route path="/admin" element={<AdminRoot />}>
+        <Route index element={<Dashboard />} />
+        <Route path="content" element={<ContentManager />} />
+        <Route path="crm" element={<CRM />} />
+        <Route path="opportunities" element={<Opportunities />} />
+        <Route path="notes" element={<Notes />} />
+        <Route path="tasks" element={<Tasks />} />
       </Route>
     </Routes>
   );
