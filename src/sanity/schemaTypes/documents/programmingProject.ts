@@ -105,6 +105,12 @@ export const programmingProject = defineType({
     defineField({ name: 'liveUrl', title: 'Live / demo URL', type: 'url' }),
     defineField({ name: 'featured', type: 'boolean', initialValue: false }),
     defineField({ name: 'date', type: 'datetime' }),
+    defineField({
+      name: 'tags',
+      type: 'array',
+      of: [defineArrayMember({ type: 'string' })],
+      options: { layout: 'tags' },
+    }),
     defineField({ name: 'seo', type: 'seo' }),
   ],
   preview: {

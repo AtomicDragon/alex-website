@@ -4,6 +4,7 @@ import { funProjectBySlugQuery } from '../../lib/sanity/queries';
 import type { FunProject } from '../../lib/sanity/types';
 import { urlFor } from '../../lib/sanity/image';
 import PortableText from '../../components/PortableText';
+import Seo from '../../components/Seo';
 import MasonryGallery, {
   type MasonryImage,
 } from '../../components/galleries/MasonryGallery';
@@ -50,6 +51,15 @@ export default function FunProjectDetailPage() {
 
   return (
     <article className="mx-auto max-w-3xl px-6 py-16">
+      <Seo
+        title={project.title}
+        description={project.description}
+        image={
+          project.screenshots?.[0]
+            ? urlFor(project.screenshots[0]).width(1200).height(630).url()
+            : undefined
+        }
+      />
       <Link to="/fun/projects" className="text-sm text-accent hover:underline">
         ← Experiments
       </Link>

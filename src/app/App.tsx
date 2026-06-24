@@ -5,6 +5,9 @@ import RootLayout from '../components/layout/RootLayout';
 import HomePage from '../pages/HomePage';
 import AboutPage from '../pages/AboutPage';
 import ContactPage from '../pages/ContactPage';
+import SearchPage from '../pages/SearchPage';
+import TagsPage from '../pages/TagsPage';
+import TagPage from '../pages/TagPage';
 import NotFound from '../pages/NotFound';
 
 import ProgrammingLanding from '../sections/programming/ProgrammingLanding';
@@ -59,6 +62,9 @@ export default function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/contact" element={<ContactPage />} />
+        <Route path="/search" element={<SearchPage />} />
+        <Route path="/tags" element={<TagsPage />} />
+        <Route path="/tag/:tag" element={<TagPage />} />
 
         {/* Programming world */}
         <Route path="/programming">

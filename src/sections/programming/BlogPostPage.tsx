@@ -4,6 +4,7 @@ import { blogPostBySlugQuery } from '../../lib/sanity/queries';
 import type { BlogPost } from '../../lib/sanity/types';
 import { urlFor } from '../../lib/sanity/image';
 import PortableText from '../../components/PortableText';
+import Seo from '../../components/Seo';
 
 function formatDate(iso?: string) {
   if (!iso) return null;
@@ -52,6 +53,16 @@ export default function BlogPostPage() {
 
   return (
     <article className="mx-auto max-w-3xl px-6 py-16">
+      <Seo
+        title={post.title}
+        description={post.category ? `${post.category} · article` : undefined}
+        keywords={post.tags}
+        image={
+          post.coverImage
+            ? urlFor(post.coverImage).width(1200).height(630).url()
+            : undefined
+        }
+      />
       <Link to="/programming/blog" className="text-sm text-accent hover:underline">
         ← Blog
       </Link>

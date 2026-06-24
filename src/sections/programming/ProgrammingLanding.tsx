@@ -12,6 +12,7 @@ import ProjectCard from '../../components/cards/ProjectCard';
 import PostCard from '../../components/cards/PostCard';
 import SkillsMatrix from './SkillsMatrix';
 import { RESUME_URL } from './data';
+import Seo from '../../components/Seo';
 
 export default function ProgrammingLanding() {
   const { data: featured } = useSanityQuery<ProgrammingProjectCard[]>(
@@ -21,6 +22,10 @@ export default function ProgrammingLanding() {
 
   return (
     <div className="mx-auto max-w-6xl px-6 py-20">
+      <Seo
+        title="Programming"
+        description="Professional portfolio and technical project showcase."
+      />
       {/* Hero */}
       <section>
         <p className="text-accent">{'// developer'}</p>

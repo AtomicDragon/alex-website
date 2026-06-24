@@ -4,6 +4,7 @@ import { featuredRecipesQuery } from '../../lib/sanity/queries';
 import type { RecipeCard as RecipeCardType } from '../../lib/sanity/types';
 import RecipeCard from '../../components/cards/RecipeCard';
 import { philosophy, journey } from './data';
+import Seo from '../../components/Seo';
 
 export default function ChefLanding() {
   const { data: featured } =
@@ -11,6 +12,10 @@ export default function ChefLanding() {
 
   return (
     <div className="mx-auto max-w-6xl px-6 py-20">
+      <Seo
+        title="Chef"
+        description="Recipes, food writing, and a gallery of culinary creations."
+      />
       {/* Hero / philosophy */}
       <section className="max-w-3xl">
         <p className="tracking-[0.3em] text-accent uppercase">Chef</p>

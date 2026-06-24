@@ -4,6 +4,7 @@ import { foodBlogBySlugQuery } from '../../lib/sanity/queries';
 import type { FoodBlog } from '../../lib/sanity/types';
 import { urlFor } from '../../lib/sanity/image';
 import PortableText from '../../components/PortableText';
+import Seo from '../../components/Seo';
 import MasonryGallery, {
   type MasonryImage,
 } from '../../components/galleries/MasonryGallery';
@@ -60,6 +61,15 @@ export default function FoodBlogPostPage() {
 
   return (
     <article className="mx-auto max-w-3xl px-6 py-16">
+      <Seo
+        title={post.title}
+        description="Food blog"
+        image={
+          post.images?.[0]
+            ? urlFor(post.images[0]).width(1200).height(630).url()
+            : undefined
+        }
+      />
       <Link to="/chef/blog" className="text-sm text-accent hover:underline">
         ← Food blog
       </Link>

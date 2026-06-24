@@ -167,3 +167,32 @@ export const funProjectBySlugQuery = `
   demoUrl,
   screenshots
 }`;
+
+/* ------------------------- Search & tags ------------------------- */
+
+const SEARCHABLE_TYPES = `[
+  "programmingProject", "blogPost", "recipe",
+  "foodBlog", "funProject", "game", "galleryItem"
+]`;
+
+const contentHitFields = `
+  _id,
+  _type,
+  title,
+  "slug": slug.current,
+  "description": coalesce(description, tagline)
+`;
+
+export const searchQuery = `
+*[_type in ${SEARCHABLE_TYPES} && (
+  title match $q || description match $q || tagline match $q
+)] | order(_type asc, title asc) {
+  ${contentHitFields}
+}`;
+
+export const allTagsQuery = `array::unique(*[defined(tags)].tags[])`;
+
+export const contentByTagQuery = `
+*[$tag in tags] | order(_type asc, title asc) {
+  ${contentHitFields}
+}`;

@@ -4,6 +4,7 @@ import { recipeBySlugQuery } from '../../lib/sanity/queries';
 import type { Recipe } from '../../lib/sanity/types';
 import { urlFor } from '../../lib/sanity/image';
 import PortableText from '../../components/PortableText';
+import Seo from '../../components/Seo';
 import MasonryGallery, {
   type MasonryImage,
 } from '../../components/galleries/MasonryGallery';
@@ -57,6 +58,17 @@ export default function RecipeDetailPage() {
 
   return (
     <article className="mx-auto max-w-3xl px-6 py-16">
+      <Seo
+        title={recipe.title}
+        description={
+          recipe.difficulty ? `${recipe.difficulty} recipe` : 'Recipe'
+        }
+        image={
+          recipe.heroImage
+            ? urlFor(recipe.heroImage).width(1200).height(630).url()
+            : undefined
+        }
+      />
       <Link to="/chef/recipes" className="text-sm text-accent hover:underline">
         ← Recipes
       </Link>

@@ -31,6 +31,12 @@ export const game = defineType({
       type: 'image',
       options: { hotspot: true },
     }),
+    defineField({
+      name: 'tags',
+      type: 'array',
+      of: [{ type: 'string' }],
+      options: { layout: 'tags' },
+    }),
     defineField({ name: 'seo', type: 'seo' }),
   ],
   preview: {

@@ -4,6 +4,7 @@ import { projectBySlugQuery } from '../../lib/sanity/queries';
 import type { ProgrammingProject } from '../../lib/sanity/types';
 import { urlFor } from '../../lib/sanity/image';
 import PortableText from '../../components/PortableText';
+import Seo from '../../components/Seo';
 
 export default function ProjectDetailPage() {
   const { slug } = useParams();
@@ -42,6 +43,15 @@ export default function ProjectDetailPage() {
 
   return (
     <article className="mx-auto max-w-4xl px-6 py-16">
+      <Seo
+        title={project.title}
+        description={project.tagline || project.description}
+        image={
+          project.coverImage
+            ? urlFor(project.coverImage).width(1200).height(630).url()
+            : undefined
+        }
+      />
       <Link
         to="/programming/projects"
         className="text-sm text-accent hover:underline"

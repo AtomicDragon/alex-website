@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import Seo from '../components/Seo';
 
 type World = {
   to: string;
@@ -35,6 +36,7 @@ const worlds: World[] = [
 export default function HomePage() {
   return (
     <div className="mx-auto max-w-6xl px-6 py-24">
+      <Seo />
       <header className="mx-auto max-w-2xl text-center">
         <h1 className="text-5xl font-bold text-primary">Hi, I&apos;m Alex</h1>
         <p className="mt-4 text-lg text-muted">

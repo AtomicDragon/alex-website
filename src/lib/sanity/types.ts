@@ -128,3 +128,14 @@ export type FunProject = FunProjectCard & {
   demoUrl?: string;
   screenshots?: SanityImageSource[];
 };
+
+/* ------------------------- Search & tags ------------------------- */
+
+/** A cross-type content result used by search and tag pages. */
+export type ContentHit = {
+  _id: string;
+  _type: string;
+  title: string;
+  slug: string | null;
+  description?: string;
+};

@@ -8,6 +8,8 @@ const worlds = [
 ];
 
 const secondary = [
+  { to: '/search', label: 'Search' },
+  { to: '/tags', label: 'Tags' },
   { to: '/about', label: 'About' },
   { to: '/contact', label: 'Contact' },
 ];

@@ -4,6 +4,7 @@ import { gamesQuery, funProjectsQuery } from '../../lib/sanity/queries';
 import type { GameCard as GameCardType, FunProjectCard as FunProjectCardType } from '../../lib/sanity/types';
 import GameCard from '../../components/cards/GameCard';
 import FunProjectCard from '../../components/cards/FunProjectCard';
+import Seo from '../../components/Seo';
 
 export default function FunLanding() {
   const { data: games } = useSanityQuery<GameCardType[]>(gamesQuery);
@@ -14,6 +15,10 @@ export default function FunLanding() {
 
   return (
     <div className="mx-auto max-w-6xl px-6 py-20">
+      <Seo
+        title="Fun"
+        description="Mini games, creative coding, simulations, and experiments."
+      />
       {/* Hero */}
       <section className="max-w-3xl">
         <p className="font-bold tracking-wide text-accent-2">~ fun lab ~</p>

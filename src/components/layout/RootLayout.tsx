@@ -1,6 +1,8 @@
+import { useEffect } from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
 import GlobalNav from '../navigation/GlobalNav';
 import Footer from '../Footer';
+import { trackPageView } from '../../lib/analytics';
 
 const SECTION_THEMES = ['programming', 'chef', 'fun'] as const;
 
@@ -15,6 +17,11 @@ export default function RootLayout() {
   const theme = (SECTION_THEMES as readonly string[]).includes(segment)
     ? segment
     : 'home';
+
+  // Report a page view on every navigation.
+  useEffect(() => {
+    trackPageView(pathname);
+  }, [pathname]);
 
   return (
     <div

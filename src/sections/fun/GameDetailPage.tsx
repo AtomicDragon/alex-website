@@ -2,6 +2,8 @@ import { Link, useParams } from 'react-router-dom';
 import { useSanityQuery } from '../../hooks/useSanityQuery';
 import { gameBySlugQuery } from '../../lib/sanity/queries';
 import type { Game } from '../../lib/sanity/types';
+import { urlFor } from '../../lib/sanity/image';
+import Seo from '../../components/Seo';
 
 export default function GameDetailPage() {
   const { slug } = useParams();
@@ -40,6 +42,15 @@ export default function GameDetailPage() {
 
   return (
     <article className="mx-auto max-w-5xl px-6 py-16">
+      <Seo
+        title={game.title}
+        description={game.description}
+        image={
+          game.thumbnail
+            ? urlFor(game.thumbnail).width(1200).height(630).url()
+            : undefined
+        }
+      />
       <Link to="/fun/games" className="text-sm text-accent hover:underline">
         ← Games
       </Link>
