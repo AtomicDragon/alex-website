@@ -96,3 +96,35 @@ export type GalleryItem = {
   category?: string;
   description?: string;
 };
+
+/* ----------------------------- Fun ----------------------------- */
+
+/** Game card-level fields. */
+export type GameCard = {
+  _id: string;
+  title: string;
+  slug: string | null;
+  description?: string;
+  thumbnail?: SanityImageSource;
+};
+
+/** Full game (detail page with embed). */
+export type Game = GameCard & {
+  embedUrl?: string;
+};
+
+/** Fun project card-level fields. */
+export type FunProjectCard = {
+  _id: string;
+  title: string;
+  slug: string | null;
+  description?: string;
+  thumbnail?: SanityImageSource;
+};
+
+/** Full fun project (detail page). */
+export type FunProject = FunProjectCard & {
+  content?: PortableText;
+  demoUrl?: string;
+  screenshots?: SanityImageSource[];
+};

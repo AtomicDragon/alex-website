@@ -1,7 +1,6 @@
 import { lazy, Suspense } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import RootLayout from '../components/layout/RootLayout';
-import Placeholder, { DetailPlaceholder } from '../components/layout/Placeholder';
 
 import HomePage from '../pages/HomePage';
 import AboutPage from '../pages/AboutPage';
@@ -21,6 +20,10 @@ import FoodBlogPage from '../sections/chef/FoodBlogPage';
 import FoodBlogPostPage from '../sections/chef/FoodBlogPostPage';
 import GalleryPage from '../sections/chef/GalleryPage';
 import FunLanding from '../sections/fun/FunLanding';
+import GamesPage from '../sections/fun/GamesPage';
+import GameDetailPage from '../sections/fun/GameDetailPage';
+import FunProjectsPage from '../sections/fun/FunProjectsPage';
+import FunProjectDetailPage from '../sections/fun/FunProjectDetailPage';
 
 import AdminPage from '../admin/AdminPage';
 
@@ -74,25 +77,10 @@ export default function App() {
         {/* Fun world */}
         <Route path="/fun">
           <Route index element={<FunLanding />} />
-          <Route
-            path="games"
-            element={
-              <Placeholder
-                title="Games"
-                subtitle="Embeddable browser games, puzzles, and AI experiments."
-              />
-            }
-          />
-          <Route
-            path="projects"
-            element={
-              <Placeholder
-                title="Fun Projects"
-                subtitle="Creative coding, visualizations, and art experiments."
-              />
-            }
-          />
-          <Route path=":slug" element={<DetailPlaceholder kind="Fun" />} />
+          <Route path="games" element={<GamesPage />} />
+          <Route path="games/:slug" element={<GameDetailPage />} />
+          <Route path="projects" element={<FunProjectsPage />} />
+          <Route path="projects/:slug" element={<FunProjectDetailPage />} />
         </Route>
 
         <Route path="/admin" element={<AdminPage />} />

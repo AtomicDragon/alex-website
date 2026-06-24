@@ -125,3 +125,45 @@ export const galleryItemsQuery = `
   category,
   description
 }`;
+
+/* ----------------------------- Fun ----------------------------- */
+
+const gameCardFields = `
+  _id,
+  title,
+  "slug": slug.current,
+  description,
+  thumbnail
+`;
+
+export const gamesQuery = `
+*[_type == "game"] | order(coalesce(_createdAt, _updatedAt) desc) {
+  ${gameCardFields}
+}`;
+
+export const gameBySlugQuery = `
+*[_type == "game" && slug.current == $slug][0] {
+  ${gameCardFields},
+  embedUrl
+}`;
+
+const funProjectCardFields = `
+  _id,
+  title,
+  "slug": slug.current,
+  description,
+  "thumbnail": screenshots[0]
+`;
+
+export const funProjectsQuery = `
+*[_type == "funProject"] | order(coalesce(_createdAt, _updatedAt) desc) {
+  ${funProjectCardFields}
+}`;
+
+export const funProjectBySlugQuery = `
+*[_type == "funProject" && slug.current == $slug][0] {
+  ${funProjectCardFields},
+  content,
+  demoUrl,
+  screenshots
+}`;
