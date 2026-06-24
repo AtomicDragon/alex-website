@@ -1,0 +1,85 @@
+/*
+ * Three-world theme token system.
+ *
+ * Semantic design tokens live as plain CSS variables (--bg, --accent, ...) and
+ * are overridden per `[data-theme]`. The @theme inline block below maps those
+ * variables onto Tailwind's color/font namespaces so utilities like
+ * `bg-background`, `text-accent`, `border-primary` resolve through the variables
+ * and re-theme instantly when the active `data-theme` changes.
+ */
+
+@theme inline {
+  --color-background: var(--bg);
+  --color-surface: var(--surface);
+  --color-text: var(--text);
+  --color-muted: var(--muted);
+  --color-primary: var(--primary);
+  --color-accent: var(--accent);
+  --color-accent-2: var(--accent-2);
+  --color-accent-3: var(--accent-3);
+  --color-success: var(--success);
+  --color-border: var(--border);
+
+  --font-sans: var(--font-body);
+}
+
+/* Home / default — neutral hub that introduces the three worlds */
+:root,
+[data-theme='home'] {
+  --bg: #0e1116;
+  --surface: #171b22;
+  --text: #e6e8eb;
+  --muted: #9ba3af;
+  --primary: #e6e8eb;
+  --accent: #8b5cf6;
+  --accent-2: #22d3ee;
+  --accent-3: #f472b6;
+  --success: #10b981;
+  --border: #2a2f3a;
+  --font-body: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+
+/* Programming — ivory, IDE-inspired, monospace */
+[data-theme='programming'] {
+  --bg: #f8f5ee;
+  --surface: #ffffff;
+  --text: #1e293b;
+  --muted: #64748b;
+  --primary: #1e293b;
+  --accent: #3b82f6;
+  --accent-2: #3b82f6;
+  --accent-3: #2563eb;
+  --success: #10b981;
+  --border: #e2ddd0;
+  --font-body: 'Courier New', ui-monospace, 'SFMono-Regular', monospace;
+}
+
+/* Chef — dark luxury, fine dining, gold + cream */
+[data-theme='chef'] {
+  --bg: #111111;
+  --surface: #1a1a1a;
+  --text: #f5f5dc;
+  --muted: #b8b2a0;
+  --primary: #f5f5dc;
+  --accent: #d4af37;
+  --accent-2: #d4af37;
+  --accent-3: #c9a227;
+  --success: #8fae5d;
+  --border: #2c2c2c;
+  --font-body: Georgia, 'Times New Roman', 'Cormorant Garamond', serif;
+}
+
+/* Fun — playful, bright neon on deep night */
+[data-theme='fun'] {
+  --bg: #0f172a;
+  --surface: #1e293b;
+  --text: #f1f5f9;
+  --muted: #94a3b8;
+  --primary: #f1f5f9;
+  --accent: #f472b6;
+  --accent-2: #22d3ee;
+  --accent-3: #a78bfa;
+  --success: #34d399;
+  --border: #334155;
+  --font-body: ui-rounded, 'Segoe UI', system-ui, sans-serif;
+}

@@ -1,16 +1,15 @@
-*{
-    margin: 0;
-    padding:0;
-    box-sizing:border-box;
-    font-family: 'Courier New', monospace;
-}
+@import 'tailwindcss';
+@import './styles/tokens.css';
 
-body{
-  background: #f0f0f0;
-}
-a{
-  text-decoration: none;
-  color: inherit;
-  line-height: 1;
-  cursor: pointer;
+@layer base {
+  body {
+    background-color: var(--color-background);
+    color: var(--color-text);
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
 }

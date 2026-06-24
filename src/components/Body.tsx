@@ -1,4 +1,3 @@
-import React from 'react';
 import ProjectCard from './ProjectCard';
 import './Body.css';
 import project1 from '../assets/project1.jpg';
